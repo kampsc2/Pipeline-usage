@@ -14271,6 +14271,7 @@ a.anchor-link {
 <li><strong>Unused Takeaway Capacity in Western Canada ~ 13% or 87,000 m3/d</strong></li>
 </ol>
 <p>To accomplish this I have taken advantage of the <a href="https://www.cer-rec.gc.ca/en/index.html">Canada Energy Regulator Website</a>. This government entity provides a raw dataset which is available for download. This <a href="https://open.canada.ca/data/en/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34">dataset</a> contains throughput, capacity, and apportionment data for the major Canadian crude pipelines. The dataset starts in 2006 and has monthly data up until June 2020. For this report I will restrain my analysis <strong>only to 2020</strong> .</p>
+<p>You can find the github to reproduce this file <a href="https://github.com/kampsc2/Pipeline-usage">here</a>.</p>
 <p>To make this report more clear and consice I have broken the functions that read, process, and visualize this data into their own files. All of these functions can be found within the src directory. I have also included the raw data in the repository. It can be found inside the data directory. The data is broken into three sections.</p>
 <ol>
 <li><strong>capacity</strong>: files which contain the raw throughput and capacity metrics for each pipeline</li>
@@ -14651,16 +14652,12 @@ a.anchor-link {
 </li>
 <li><p><strong>Margin</strong>: The unused percentage of the capacity</p>
 </li>
-</ol>
-<ol>
 <li><p><strong>Margin Type 1</strong>: The unused percentage of capacity where <strong>missing values are filled with zeros</strong></p>
 </li>
 <li><p><strong>Capacity Type 1</strong>: Inferred capacity of the pipeline using <strong>Margin Type 1</strong> (1000 m3/d)</p>
 </li>
 <li><p><strong>Excess Capacity Type 1</strong>: Excess Capacity based on <strong>Margin Type 1</strong> (1000 m3/d)</p>
 </li>
-</ol>
-<ol>
 <li><p><strong>Margin Type 2</strong>: The unused percentage of capacity where <strong>missing values are filled with the capacity weighted average of the available margins</strong></p>
 </li>
 <li><p><strong>Capacity Type 2</strong>: Inferred capacity of the pipeline using <strong>Margin Type 2</strong> (1000 m3/d)</p>
@@ -15215,7 +15212,7 @@ if (outputEl) {{
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>We can further confirm this by looking at the apportionment for the mainline system. As you can see below, in May 2020 and April 2020. There was no apportionment for the Canadian Mainline system.</p>
+<p>We can further confirm this by looking at the apportionment for the mainline system. As you can see below, in May 2020 and June 2020. There was no apportionment for the Canadian Mainline system.</p>
 <p>If there had been some apportionment. Then we could have made an assumption that somehwere else on the line, one of the feeder lines for example, had hit capacity and therefore was unable to take any more oil. This would have been cause to adjust the capacity estimate to account for feeder line capacities.</p>
 
 </div>
@@ -15290,7 +15287,7 @@ if (outputEl) {{
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="5.-Conclusion">5. Conclusion<a class="anchor-link" href="#5.-Conclusion">&#182;</a></h3><p>In conclusion, in June 2020 Canadian crude pipeline transportation operated with an estimated unused capacity of about <strong>20%</strong> or <strong>160,000 m3/d</strong>. <a href="https://www.petroleum-economist.com/articles/midstream-downstream/pipelines/2020/canadian-pipelines-to-nowhere">Petroleum Economist</a> attributes this suplus of takeaway capacity to lower prices following a collapse in the demand for refined products induced by the COVID-19 lockdowns.</p>
 <p>As can be seen in the data above. The vast majority of this capacity is coming from the Enbridge Canadian Mainline. Both the Keystone, and the Trans Mountain pipelines are almost at capacity attributing very little to this number.</p>
-<p>If we consider the geography of these lines, all three of the Keystone, Trans Mountain, and Enbridge Canadian Mainline ship crude out of Western Canada  (the highest producing region). Using Margin Type 1, we can see that  about 45% of that excess capacity (70,300 m3/d) is at the <strong>Into-Sarnia</strong> key point in <strong>Eastern Canada</strong>.</p>
+<p>If we consider the geography of these lines, all three of the Keystone, Trans Mountain, and Enbridge Canadian Mainline ship crude out of Western Canada  (the highest producing region). We can see that 70,300 m3/d of excess capacity is at the <strong>Into-Sarnia</strong> key point in <strong>Eastern Canada</strong>.</p>
 <p>With this in mind, to adjust these metrics for <strong>Western Canada</strong> we could remove the <strong>Into-Sarnia</strong> key point. Doing this would provide a <strong>Capacity Type 1</strong> of around 666,000 m3/d and a Total Throughput of around 579,000 m3/d.</p>
 <p>Using thesse numbers, we can calaculate an estimated unused takeaway capacity in <strong>Western Canada</strong> of about <strong>13%</strong>, equivalent to about <strong>87,000 m3/d or 547,000 bbl/d</strong>.</p>
 <p>This analysis suggests that even though historically Canada's crude pipelines have operated at capacity, in recent months this has no longer been the case. In both Western Canada and Canada as a whole, the pipelines are operating with significant unused takeaway capacity.</p>
