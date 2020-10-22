@@ -1,0 +1,11 @@
+certifi==2020.6.20
+DateTime==4.3
+numpy==1.19.2
+pandas==1.1.3
+plotly==4.11.0
+python-dateutil==2.8.1
+pytz==2020.1
+retrying==1.3.3
+six==1.15.0
+wincertstore==0.2
+zope.interface==5.1.2
