@@ -6,6 +6,20 @@ from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 
 def profile_pipeline(df, pipeline = 'Canadian Mainline', grouping_var = 'Trade Type', key_points = []):
+    '''
+    Create a through put and capacity chart where we can show the distribution by another variable (Trade Type, Product, Key Point)
+    Also creates a sub plot to show excess capacity
+
+    Params:
+        df: dataframe returned from the get_crude_oil function
+        pipeline: str pipeline name
+        grouping_var: another df col to groupby
+        key_points: select key points on the pipeline to use
+
+    Returns:
+        go.Figure Object
+    '''
+   
     df = df[df['Pipeline Name'] == pipeline]
     
     if key_points:
@@ -97,6 +111,17 @@ def profile_pipeline(df, pipeline = 'Canadian Mainline', grouping_var = 'Trade T
 
 
 def make_apportionment_charts(pipeline = 'Trans Mountain Pipeline', year = 2020):
+    '''
+    Reads data and creates an apportionment chart
+
+    Params: 
+        pipeline: pipeline name from the get_crude_data df
+        year: the year in which the chart should start
+
+    Returns:
+        go.Figure object
+    '''
+    
     df = pd.read_csv('data/apportionment/apportionment-dataset.csv')
     df = df[df.Year >= year]
     df['throughput'] = df['Original Nominations (1000 m3/d)'] * (1 - df['Apportionment Percentage'])
@@ -127,5 +152,5 @@ def make_apportionment_charts(pipeline = 'Trans Mountain Pipeline', year = 2020)
         )
     )
 
-    fig.update_layout(template = 'plotly_white')
+    fig.update_layout(template = 'plotly_white', title = f'{pipeline} Apportionment')
     return fig
